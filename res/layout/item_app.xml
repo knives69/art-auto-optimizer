@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_item_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:gravity="center_vertical"
+    android:focusable="true"
+    android:clickable="true"
+    android:background="@drawable/selector_item_tv">
+
+    <!-- Active Selection Cursor Arrow (Visible when focused on TV) -->
+    <TextView
+        android:id="@+id/tv_cursor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="▶ "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#93C5FD"
+        android:visibility="gone"
+        android:layout_marginEnd="6dp" />
+
+    <!-- App Info (Left) -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_app_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre de la App"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/tv_app_package"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="com.ejemplo.app"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/tv_app_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pulsar [OK] para compilar con prioridad alta"
+            android:textSize="11sp"
+            android:textColor="@color/accent"
+            android:visibility="gone"
+            android:layout_marginTop="3dp" />
+    </LinearLayout>
+
+    <!-- Status Badge (Right) -->
+    <TextView
+        android:id="@+id/tv_app_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SPEED"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:background="@drawable/btn_primary"
+        android:layout_marginStart="8dp" />
+
+</LinearLayout>

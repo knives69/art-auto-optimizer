@@ -1,0 +1,17 @@
+# Build output
+bin/
+libs/
+*.apk
+*.idsig
+*.zip
+
+# IDE and OS
+.DS_Store
+Thumbs.db
+*.iml
+.idea/
+.vscode/
+
+# Logs and scratch files
+*.log
+scratch/

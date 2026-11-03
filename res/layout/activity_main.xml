@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/bg_dark"
+    android:padding="16dp"
+    android:baselineAligned="false">
+
+    <!-- PANEL IZQUIERDO: Controles, Ajustes y Logs (Ancho ~38%, altura exacta sin desbordar) -->
+    <LinearLayout
+        android:id="@+id/panel_left"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="38"
+        android:orientation="vertical"
+        android:paddingEnd="16dp">
+
+        <!-- Header: Título y Estado Shizuku -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/app_name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/tv_shizuku_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shizuku..."
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:background="@drawable/badge_yellow" />
+
+            <Button
+                android:id="@+id/btn_shizuku_auth"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="@string/btn_request_permission"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:background="@drawable/selector_btn_tv"
+                android:focusable="true"
+                android:nextFocusRight="@+id/container_apps"
+                android:visibility="gone"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+
+        <!-- Acciones Manuales Prioritarias -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btn_optimize_now"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:text="🚀 OPTIMIZAR TODO (ALTA VELOCIDAD)"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/selector_btn_tv"
+                android:focusable="true"
+                android:nextFocusRight="@+id/container_apps"
+                android:layout_marginBottom="6dp" />
+
+            <Button
+                android:id="@+id/btn_refresh_list"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:text="🔄 Actualizar Estado de Apps"
+                android:textSize="12sp"
+                android:textColor="#E0E7FF"
+                android:background="@drawable/selector_item_tv"
+                android:focusable="true"
+                android:nextFocusRight="@+id/container_apps" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="gone"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tv_progress_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="@color/text_secondary"
+                android:visibility="gone"
+                android:layout_marginTop="3dp" />
+        </LinearLayout>
+
+        <!-- Ajustes de Automatización -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ajustes de Fondo"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_secondary"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Fila 1: Auto Install -->
+            <LinearLayout
+                android:id="@+id/row_auto_install"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:focusable="true"
+                android:nextFocusRight="@+id/container_apps"
+                android:background="@drawable/selector_row_tv"
+                android:padding="4dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Optimizar al instalar/actualizar"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_primary" />
+                <Switch
+                    android:id="@+id/switch_auto_install"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="false" />
+            </LinearLayout>
+
+
+            <!-- Fila 2: Optimize on Suspend -->
+            <LinearLayout
+                android:id="@+id/row_allow_suspend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:focusable="true"
+                android:nextFocusRight="@+id/container_apps"
+                android:background="@drawable/selector_row_tv"
+                android:padding="4dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Optimizar en reposo (suspend)"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_primary" />
+                <Switch
+                    android:id="@+id/switch_allow_suspend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="false" />
+            </LinearLayout>
+
+            <!-- Fila 3: Avoid Heavy Tasks -->
+            <LinearLayout
+                android:id="@+id/row_avoid_heavy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:focusable="true"
+                android:nextFocusRight="@+id/container_apps"
+                android:background="@drawable/selector_row_tv"
+                android:padding="4dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Pausar si juegas / alta CPU"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_primary" />
+                <Switch
+                    android:id="@+id/switch_avoid_heavy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="false" />
+            </LinearLayout>
+
+            <!-- Fila 4: Daily Maintenance -->
+            <LinearLayout
+                android:id="@+id/row_daily"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:focusable="true"
+                android:nextFocusRight="@+id/container_apps"
+                android:background="@drawable/selector_row_tv"
+                android:padding="4dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Mantenimiento diario (JobScheduler)"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_primary" />
+                <Switch
+                    android:id="@+id/switch_daily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="false" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Logs Card: Ocupa todo el espacio vertical restante (100% visible sin cortes en TV) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/card_background"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registro Reciente"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+                <TextView
+                    android:id="@+id/btn_clear_logs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="Limpiar"
+                    android:textColor="@color/accent"
+                    android:textSize="11sp"
+                    android:focusable="true"
+                    android:nextFocusDown="@+id/scroll_logs"
+                    android:nextFocusRight="@+id/container_apps"
+                    android:background="@drawable/selector_row_tv"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp" />
+            </RelativeLayout>
+
+            <ScrollView
+                android:id="@+id/scroll_logs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:scrollbars="vertical"
+                android:focusable="true"
+                android:background="@drawable/selector_log_tv"
+                android:padding="6dp"
+                android:nextFocusUp="@+id/btn_clear_logs"
+                android:nextFocusRight="@+id/container_apps">
+                <TextView
+                    android:id="@+id/tv_logs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textColor="#CBD5E1"
+                    android:lineSpacingExtra="2dp"
+                    android:typeface="monospace"
+                    android:text="Sin actividad registrada aún." />
+            </ScrollView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- PANEL DERECHO: Lista Completa de Aplicaciones Navegable con Mando TV (Ancho ~62%) -->
+    <LinearLayout
+        android:id="@+id/panel_right"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="62"
+        android:background="@drawable/card_background"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tv_apps_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aplicaciones de Usuario"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/tv_apps_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Cargando estado..."
+                android:textSize="13sp"
+                android:textColor="@color/accent" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Navega con [ARRIBA] y [ABAJO]. Pulsa [OK] sobre cualquier app pendiente para compilarla a máxima velocidad. Pulsa [IZQUIERDA] para ir al panel de controles."
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="12dp" />
+
+        <ScrollView
+            android:id="@+id/scroll_right_apps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:focusable="false">
+
+            <LinearLayout
+                android:id="@+id/container_apps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

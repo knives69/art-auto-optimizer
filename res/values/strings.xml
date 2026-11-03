@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ART Auto-Optimizer</string>
+    <string name="shizuku_status_title">Estado de Shizuku</string>
+    <string name="shizuku_ok">Shizuku conectado y autorizado</string>
+    <string name="shizuku_need_permission">Shizuku detectado pero sin permiso</string>
+    <string name="shizuku_not_running">Shizuku no está en ejecución</string>
+    <string name="btn_request_permission">Autorizar en Shizuku</string>
+    
+    <string name="section_settings">Automatización Inteligente</string>
+    <string name="pref_auto_install_title">Optimizar al instalar/actualizar</string>
+    <string name="pref_auto_install_desc">Compila en speed nada más instalarse o actualizarse una app</string>
+
+    <string name="pref_screen_on_title">Con pantalla encendida</string>
+    <string name="pref_screen_on_desc">Activo mientras usas el dispositivo (evita bloqueos de sleep)</string>
+
+    <string name="pref_avoid_heavy_title">Pausar durante juegos o carga pesada</string>
+    <string name="pref_avoid_heavy_desc">Comprueba la CPU y temperatura; si estás jugando, se pospone</string>
+
+    <string name="pref_daily_title">Mantenimiento diario (JobScheduler)</string>
+    <string name="pref_daily_desc">Barrido cada 24h cuando el sistema esté tranquilo y despierto</string>
+
+    <string name="pref_charging_title">Solo si está cargando</string>
+    <string name="pref_charging_desc">Desactivado por defecto: optimiza siempre sin depender del cargador</string>
+
+    <string name="section_actions">Acciones</string>
+    <string name="btn_optimize_all">Optimizar todas las apps ahora</string>
+    <string name="section_logs">Registro de Actividad</string>
+    <string name="btn_clear_logs">Limpiar</string>
+</resources>
